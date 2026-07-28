@@ -5,7 +5,7 @@ import "../styles/hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 135;
+const FRAME_COUNT = 79;
 const FRAME_BASE  = "/hero-frames/ezgif-frame-";
 
 /* Zero-pad to 3 digits */
