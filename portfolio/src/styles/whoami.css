@@ -1,0 +1,60 @@
+/* ============================================================
+   WHO I AM — Horizontal scroll heading transition
+   ============================================================ */
+
+.whoami {
+  position: relative;
+  height: 50vh;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--color-bg);
+  /* Subtle gradient separator */
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.whoami__track {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.whoami__heading {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-black);
+  font-size: clamp(5rem, 15vw, 18rem);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tight);
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-text-faint);
+  will-change: transform;
+
+  /* The heading is moved by GSAP — starts off left */
+  display: inline-block;
+}
+
+.whoami__heading-accent {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-accent-wine);
+}
+
+/* When reduced motion: just center it */
+@media (prefers-reduced-motion: reduce) {
+  .whoami__heading {
+    transform: none !important;
+    -webkit-text-stroke-color: var(--color-text-muted);
+    text-align: center;
+    width: 100%;
+    font-size: clamp(3rem, 10vw, 8rem);
+  }
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 600px) {
+  .whoami {
+    height: 35vh;
+  }
+}

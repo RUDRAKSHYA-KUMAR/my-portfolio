@@ -7,9 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function useLenis() {
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
+      duration: prefersReduced ? 0.1 : 1.2,
+      smoothWheel: !prefersReduced,
+      /* Lenis handles anchor clicks natively */
     });
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -19,12 +22,15 @@ export default function useLenis() {
     };
 
     gsap.ticker.add(update);
-
     gsap.ticker.lagSmoothing(0);
 
-    ScrollTrigger.refresh();
+    /* Small delay to let all ScrollTriggers register */
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
 
     return () => {
+      clearTimeout(refreshTimer);
       gsap.ticker.remove(update);
       lenis.destroy();
     };

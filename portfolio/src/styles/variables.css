@@ -1,0 +1,115 @@
+/* ============================================================
+   DESIGN SYSTEM — CSS CUSTOM PROPERTIES
+   Palette: #28222C · #4A3F40 · #8A4F55 · #E4A390 · #D49C68
+   ============================================================ */
+
+:root {
+  /* ── Core Palette ───────────────────────────── */
+  --palette-deepest:   #28222C;   /* richest dark — primary bg */
+  --palette-dark:      #4A3F40;   /* secondary dark surfaces */
+  --palette-wine:      #8A4F55;   /* muted rose accent */
+  --palette-peach:     #E4A390;   /* warm highlight / key accent */
+  --palette-gold:      #D49C68;   /* warm golden / secondary accent */
+
+  /* ── Semantic Background ────────────────────── */
+  --color-bg:          #1E1A22;   /* slightly deeper than deepest for body */
+  --color-surface:     #28222C;   /* cards, panels */
+  --color-surface-2:   #332A32;   /* subtle elevated surface */
+  --color-contact-bg:  #2E2530;   /* contact section — distinct warm dark */
+
+  /* ── Semantic Foreground / Text ─────────────── */
+  --color-text:        #F0E8E0;   /* primary text — warm off-white */
+  --color-text-muted:  #9A8A88;   /* secondary text — muted warm grey */
+  --color-text-faint:  #5C4F52;   /* decorative / placeholder text */
+
+  /* ── Accent Colors ──────────────────────────── */
+  --color-accent:      #E4A390;   /* primary interactive accent — peach */
+  --color-accent-gold: #D49C68;   /* secondary accent — gold */
+  --color-accent-wine: #8A4F55;   /* tertiary accent — wine/rose */
+
+  /* ── Borders ────────────────────────────────── */
+  --color-border:      rgba(228, 163, 144, 0.12);
+  --color-border-mid:  rgba(228, 163, 144, 0.22);
+  --color-border-strong: rgba(228, 163, 144, 0.40);
+
+  /* ── Navbar Glass ───────────────────────────── */
+  --navbar-bg:         rgba(40, 34, 44, 0.60);
+  --navbar-border:     rgba(228, 163, 144, 0.18);
+  --navbar-blur:       18px;
+  --navbar-shadow:     0 4px 32px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(228, 163, 144, 0.10) inset;
+
+  /* ── Typography ─────────────────────────────── */
+  --font-display:  'Outfit', sans-serif;
+  --font-body:     'Inter', sans-serif;
+
+  --text-xs:    clamp(0.70rem, 1.2vw, 0.80rem);
+  --text-sm:    clamp(0.80rem, 1.5vw, 0.90rem);
+  --text-base:  clamp(0.90rem, 1.8vw, 1.05rem);
+  --text-md:    clamp(1.05rem, 2vw, 1.25rem);
+  --text-lg:    clamp(1.20rem, 2.5vw, 1.50rem);
+  --text-xl:    clamp(1.60rem, 3.5vw, 2.20rem);
+  --text-2xl:   clamp(2.00rem, 5vw,  3.50rem);
+  --text-3xl:   clamp(2.80rem, 7vw,  5.50rem);
+  --text-4xl:   clamp(4.00rem, 10vw, 9.00rem);
+  --text-hero:  clamp(6.00rem, 16vw, 16.00rem);
+
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  --line-height-tight:  1.05;
+  --line-height-snug:   1.25;
+  --line-height-normal: 1.60;
+  --line-height-loose:  1.80;
+
+  --letter-spacing-tight: -0.04em;
+  --letter-spacing-wide:   0.10em;
+  --letter-spacing-wider:  0.20em;
+
+  /* ── Spacing ────────────────────────────────── */
+  --space-1:   0.25rem;
+  --space-2:   0.50rem;
+  --space-3:   0.75rem;
+  --space-4:   1.00rem;
+  --space-5:   1.25rem;
+  --space-6:   1.50rem;
+  --space-8:   2.00rem;
+  --space-10:  2.50rem;
+  --space-12:  3.00rem;
+  --space-16:  4.00rem;
+  --space-20:  5.00rem;
+  --space-24:  6.00rem;
+  --space-32:  8.00rem;
+
+  /* ── Section Padding ────────────────────────── */
+  --section-px: clamp(1.5rem, 6vw, 7rem);
+  --section-py: clamp(4rem, 10vh, 8rem);
+
+  /* ── Transitions ────────────────────────────── */
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --dur-fast:    150ms;
+  --dur-normal:  300ms;
+  --dur-slow:    600ms;
+  --dur-slower:  900ms;
+
+  /* ── Border Radius ──────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
+
+  /* ── Z-index Stack ──────────────────────────── */
+  --z-base:    1;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-navbar:  500;
+  --z-top:     1000;
+}

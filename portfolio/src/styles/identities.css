@@ -1,0 +1,196 @@
+/* ============================================================
+   IDENTITIES SECTION — Pinned 3-state sequence
+   ============================================================ */
+
+.identities {
+  position: relative;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+/* ── Background text ───────────────────────── */
+.identities__bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-black);
+  font-size: clamp(8rem, 22vw, 26rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(228, 163, 144, 0.05);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* ── Pinned container ──────────────────────── */
+.identities__pin {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identities__inner {
+  position: relative;
+  z-index: var(--z-base);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 var(--section-px);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+/* ── Sidebar ────────────────────────────────── */
+.identities__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.identities__label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+
+.identities__progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.identities__progress-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border-mid);
+  transition: background var(--dur-normal) var(--ease-smooth);
+}
+
+/* ── Cards stack ────────────────────────────── */
+.identities__cards {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+}
+
+.identities__card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  /* GSAP controls opacity and y */
+  will-change: transform, opacity;
+}
+
+.identities__num {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-black);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--identity-accent, var(--color-accent));
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.identities__title {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-black);
+  font-size: clamp(3rem, 6vw, 7rem);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text);
+  /* First word gets accent color via first-line trick not available,
+     so we use a CSS variable for the underline accent */
+  text-decoration: none;
+}
+
+.identities__title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 80px;
+  background: var(--identity-accent, var(--color-accent));
+  margin-top: var(--space-4);
+  border-radius: var(--radius-full);
+}
+
+.identities__desc {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--line-height-loose);
+  color: var(--color-text-muted);
+  max-width: 560px;
+}
+
+/* ── Reduced motion: show all stacked ──────── */
+@media (prefers-reduced-motion: reduce) {
+  .identities__cards {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+  .identities__card {
+    position: static;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  .identities__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .identities__sidebar {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .identities__label {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .identities__progress {
+    flex-direction: row;
+  }
+
+  .identities__title {
+    font-size: clamp(2.5rem, 9vw, 4.5rem);
+  }
+
+  .identities__cards {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .identities__title {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+
+  .identities__num {
+    font-size: var(--text-2xl);
+  }
+}

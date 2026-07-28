@@ -10,11 +10,11 @@ import TechStack from "./sections/TechStack";
 import Contact from "./sections/Contact";
 
 function App() {
-    useLenis();
+  useLenis();
+
   return (
     <>
       <Navbar />
-
       <main>
         <Hero />
         <Philosophy />
