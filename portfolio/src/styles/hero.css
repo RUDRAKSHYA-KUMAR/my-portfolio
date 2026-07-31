@@ -142,6 +142,7 @@
     white-space: nowrap;
     pointer-events: none;
     z-index: 1;
+    
   
     -webkit-mask-image: radial-gradient(
       circle calc(var(--r) * var(--reveal-scale)) at var(--mx) var(--my),
