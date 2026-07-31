@@ -6,6 +6,25 @@
  */
 
 export const technologies = [
+  /* __ LLM / AI _______________________________ */
+  {
+    name: "Claude",
+    icon: "claude",
+    color: "#D97757",
+    category: "LLM / AI",
+  },
+  {
+    name: "Google Gemini",
+    icon: "googlegemini",
+    color: "#4285F4",
+    category: "LLM / AI",
+  },
+  {
+    name: "OpenAI",
+    icon: "openai",
+    color: "#000000",
+    category: "LLM / AI",
+  },
   /* ── AI / ML ──────────────────────────────── */
   {
     name: "Python",
@@ -14,35 +33,25 @@ export const technologies = [
     category: "AI / ML",
   },
   {
+    name: "TensorFlow",
+    icon: "tensorflow",
+    color: "#FF6F00",
+    category: "AI / ML",
+  },
+  {
     name: "LangChain",
     icon: "langchain",
     color: "#1C3C3C",
     category: "AI / ML",
   },
-  {
-    name: "LlamaIndex",
-    icon: "llamaindex",
-    color: "#7B61FF",
-    category: "AI / ML",
-  },
-  {
-    name: "OpenAI",
-    icon: "openai",
-    color: "#74AA9C",
-    category: "AI / ML",
-  },
-  {
-    name: "Gemini",
-    icon: "gemini",
-    color: "#8E75AF",
-    category: "AI / ML",
-  },
+ 
   {
     name: "Scikit-learn",
     icon: "scikitlearn",
     color: "#F7931E",
     category: "AI / ML",
   },
+  
 
   /* ── Frontend ─────────────────────────────── */
   {
@@ -57,12 +66,7 @@ export const technologies = [
     color: "#F7DF1E",
     category: "Frontend",
   },
-  {
-    name: "TypeScript",
-    icon: "typescript",
-    color: "#3178C6",
-    category: "Frontend",
-  },
+  
   {
     name: "GSAP",
     icon: "gsap",
@@ -96,15 +100,15 @@ export const technologies = [
     category: "Backend & Data",
   },
   {
-    name: "FAISS",
-    icon: "faiss",
+    name: "ChromaDB",
+    icon: "chromadb",
     color: "#0467DF",
     category: "Backend & Data",
   },
   {
-    name: "Pinecone",
-    icon: "pinecone",
-    color: "#000000",
+    name: "MySQL",
+    icon: "MySQL",
+    color: "#4479A1",
     category: "Backend & Data",
   },
 
@@ -135,4 +139,4 @@ export const technologies = [
   },
 ];
 
-export const techCategories = ["AI / ML", "Frontend", "Backend & Data", "Tools"];
+export const techCategories = ["LLM / AI", "AI / ML", "Frontend", "Backend & Data", "Tools"];
