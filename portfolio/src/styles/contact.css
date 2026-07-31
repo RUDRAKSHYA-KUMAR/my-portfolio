@@ -127,6 +127,11 @@
   align-items: center;
   justify-content: center;
 }
+.contact__social-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
 
 .contact__social-label {
   font-family: var(--font-body);

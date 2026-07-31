@@ -6,9 +6,24 @@ import "../styles/contact.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const SOCIALS = [
-  { label: "GitHub",    href: "#",  icon: "GH" },
-  { label: "LinkedIn",  href: "#",  icon: "IN" },
-  { label: "Instagram", href: "#",  icon: "IG" },
+  {
+    label: "GitHub",
+    href: "https://github.com/RUDRAKSHYA-KUMAR",
+    icon: "github",
+    color: "#FFFFFF",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/rudrakshya-kumar-784588326/",
+    icon: "linkedin",
+    color: "#0A66C2",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/rdrx_ku/",
+    icon: "instagram",
+    color: "#E4405F",
+  },
 ];
 
 function Contact() {
@@ -80,7 +95,10 @@ function Contact() {
 
         {/* Social links */}
         <div className="contact__socials">
-          {SOCIALS.map(({ label, href, icon }) => (
+        {SOCIALS.map(({ label, href, icon, color }) => {
+          const iconUrl = `https://cdn.simpleicons.org/${icon}/${color.replace("#", "")}`;
+        
+          return (
             <a
               key={label}
               href={href}
@@ -89,11 +107,27 @@ function Contact() {
               rel="noopener noreferrer"
               aria-label={label}
             >
-              <span className="contact__social-icon">{icon}</span>
+              <span className="contact__social-icon">
+                <img
+                  src={iconUrl}
+                  alt={label}
+                  width={24}
+                  height={24}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </span>
+        
               <span className="contact__social-label">{label}</span>
-              <span className="contact__social-arrow" aria-hidden="true">↗</span>
+        
+              <span className="contact__social-arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
-          ))}
+          );
+        })}
         </div>
 
         {/* Divider */}
