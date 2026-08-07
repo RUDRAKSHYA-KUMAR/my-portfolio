@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
    ============================================================ */
 const FRAME_COUNT = 79;
 const FRAME_BASE = "/hero-frames/ezgif-frame-";
-const frameUrl = (n) => `${FRAME_BASE}${String(n).padStart(3, "0")}.jpg`;
+const frameUrl = (n) => `${FRAME_BASE}${String(n).padStart(3, "0")}.png`;
 
 const TITLE_TEXT = "AI DEVELOPER";
 const NAME_TEXT = "RUDRAKSHYA ";
@@ -41,12 +41,15 @@ function Hero() {
   titleCharRefs.current = [];
   introWordRefs.current = [];
 
+
   /* ── preload frames ───────────────────────── */
   useEffect(() => {
     const imgs = [];
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
       img.src = frameUrl(i);
+      img.loading = "eager";
+      img.decoding = "async";
       imgs.push(img);
     }
     imagesRef.current = imgs;
@@ -70,6 +73,13 @@ function Hero() {
     if (!img || !img.complete || !img.naturalWidth) return;
 
     const ctx = canvas.getContext("2d");
+
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+
+    ctx.globalCompositeOperation = "source-over";
+
+
     const cw = canvas.width;
     const ch = canvas.height;
 
@@ -97,9 +107,20 @@ function Hero() {
   const resizeCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+  
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  
     canvas.width = Math.round(window.innerWidth * dpr);
     canvas.height = Math.round(window.innerHeight * dpr);
+  
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+  
+    const ctx = canvas.getContext("2d");
+  
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+  
     drawFrame(stateRef.current.frame);
   };
 
@@ -220,17 +241,24 @@ function Hero() {
 
       /* ── coordinated master scroll timeline ─────────────── */
       const frameProxy = { frame: 0 };
-      const TOTAL = 6; // arbitrary relative duration; only ratios matter
+      const TOTAL = 10; // arbitrary relative duration; only ratios matter
 
       const master = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: isMobileWidth ? "+=100%" : "+=150%",
+      
+          end: isMobileWidth ? "+=300%" : "+=450%",
+      
           pin: true,
-          scrub: 0.5,
+      
+          scrub: true,
+      
+          anticipatePin: 1,
+      
+          invalidateOnRefresh: true,
         },
-        defaults: { ease: "none" },
+        defaults: { ease: "none" }, 
       });
 
       // 1. frame sequence, driven by scroll across the whole pin
@@ -240,11 +268,9 @@ function Hero() {
           frame: FRAME_COUNT - 1,
           duration: TOTAL,
           onUpdate: () => {
-            const idx = Math.round(frameProxy.frame);
-            if (idx !== stateRef.current.frame) {
-              stateRef.current.frame = idx;
-              drawFrame(idx);
-            }
+            const idx = Math.floor(frameProxy.frame);
+            stateRef.current.frame = idx;
+            drawFrame(idx);
           },
         },
         0
